@@ -28,8 +28,8 @@ public class UserService {
 			throw new UserExistsException("User with " + user.getUsername() + " already exists");
 		}
 		
-		
-		userRepository.save(user);
+		User createdUser = userRepository.save(user);
+		user.setId(createdUser.getId());
 	}
 	
 	public Optional<User> getUserById(Long id) throws UserNotFoundException {
@@ -59,7 +59,13 @@ public class UserService {
 		}
 	}
 	
-	public User getUserByUsername(String username) {
+	public User getUserByUsername(String username) throws UserNotFoundException {
+		User findingUser = userRepository.findByUsername(username);
+		
+		if (ObjectUtils.isEmpty(findingUser)) {
+			throw new UserNotFoundException("User with " + username + " not found");
+		}
+		
 		return userRepository.findByUsername(username);
 	}
 	
