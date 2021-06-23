@@ -38,7 +38,7 @@ public class User {
 	@Column(name = "SSN", length = 50, nullable = false, unique = true)
 	private String ssn;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "user")
 	private List<Order> orders;
 	
 	/**
@@ -112,6 +112,14 @@ public class User {
 
 	public void setSsn(String ssn) {
 		this.ssn = ssn;
+	}
+
+	public List<Order> getOrders() {
+		return orders;
+	}
+
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
 	}
 
 	@Override

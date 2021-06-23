@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -25,17 +26,18 @@ import com.pala.springboot.exception.UserNotFoundException;
 import com.pala.springboot.service.UserService;
 
 @RestController
+@RequestMapping(value = "/users")
 public class UserController {
 	
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping("/users")
+	@GetMapping
 	public List<User> getAllUsers() {
 		return userService.getAllUsers();
 	}
 	
-	@PostMapping("/users")
+	@PostMapping
 	public ResponseEntity<Void> createUser(@RequestBody User user, UriComponentsBuilder uriComponentsBuilder) throws UserExistsException {
 		userService.createUser(user);
 			
@@ -49,22 +51,22 @@ public class UserController {
 		return new ResponseEntity<Void>(httpHeaders, HttpStatus.CREATED);
 	}
 	
-	@GetMapping("/users/{id}")
+	@GetMapping("/{id}")
 	public Optional<User> getUserById(@PathVariable("id") Long id) throws UserNotFoundException {
 		return userService.getUserById(id);
 	}
 	
-	@PutMapping("/users/{id}")
+	@PutMapping("/{id}")
 	public User updateUserById(@PathVariable("id") Long id, @RequestBody User user) throws UserNotFoundException {
 		return userService.updateUserById(id, user);
 	}
 	
-	@DeleteMapping("/users/{id}")
+	@DeleteMapping("/{id}")
 	public void deleteByUserId(@PathVariable("id") Long id) throws UserNotFoundException {
 		userService.deleteUserById(id);
 	}
 	
-	@GetMapping("/users/by-username/{username}")
+	@GetMapping("/by-username/{username}")
 	public User getUserByUsername(@PathVariable("username") String username) throws UserNotFoundException {
 		return userService.getUserByUsername(username);
 	}
