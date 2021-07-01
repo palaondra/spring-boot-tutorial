@@ -57,13 +57,13 @@ public class OrderController {
         order.setUser(user);
 
         // save
-        Order createdOrder = orderRepository.save(order);
+        orderRepository.save(order);
 
         HttpHeaders httpHeaders = new HttpHeaders();
 		httpHeaders.setLocation(
 				uriComponentsBuilder
 					.path("/users/{userId}/orders")
-					.buildAndExpand(user.getId())
+					.buildAndExpand(user.getUserId())
 					.toUri()
 				);
 		return new ResponseEntity<Void>(httpHeaders, HttpStatus.CREATED);

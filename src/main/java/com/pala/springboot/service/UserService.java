@@ -29,7 +29,7 @@ public class UserService {
 		}
 		
 		User createdUser = userRepository.save(user);
-		user.setId(createdUser.getId());
+		user.setUserId(createdUser.getUserId());
 	}
 	
 	public Optional<User> getUserById(Long id) throws UserNotFoundException {
@@ -47,7 +47,7 @@ public class UserService {
 			throw new UserNotFoundException("User with " + id + " not found");
 		}
 		
-		user.setId(id);
+		user.setUserId(id);
 		return userRepository.save(user);
 	}
 	

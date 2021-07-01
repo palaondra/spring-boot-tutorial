@@ -3,8 +3,6 @@ package com.pala.springboot.controller;
 import java.util.List;
 import java.util.Optional;
 
-import javax.validation.constraints.Min;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -17,7 +15,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import com.pala.springboot.data.User;
@@ -45,7 +42,7 @@ public class UserController {
 		httpHeaders.setLocation(
 				uriComponentsBuilder
 					.path("/users/{id}")
-					.buildAndExpand(user.getId())
+					.buildAndExpand(user.getUserId())
 					.toUri()
 				);
 		return new ResponseEntity<Void>(httpHeaders, HttpStatus.CREATED);
