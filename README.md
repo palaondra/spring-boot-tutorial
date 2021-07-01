@@ -1,1 +1,7 @@
-# Spring boot - REST skeleton without global exception handling
+# Spring boot:
+- Global exception handling
+- REST controllers
+- JPA repositories
+- H2 in memory database
+- HATEOAS
+- multilanguage support
