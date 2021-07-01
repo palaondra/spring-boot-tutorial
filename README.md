@@ -1,1 +1,1 @@
-# Spring boot - REST skeleton without global exception handling
+# Spring boot - REST skeleton with HATEOAS
