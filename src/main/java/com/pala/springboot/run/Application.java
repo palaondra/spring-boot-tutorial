@@ -2,11 +2,14 @@ package com.pala.springboot.run;
 
 import java.util.Locale;
 
+import com.pala.springboot.config.AppConfig;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.servlet.LocaleResolver;
@@ -15,7 +18,8 @@ import org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver;
 @SpringBootApplication
 @EnableJpaRepositories("com.pala.springboot.repository")
 @ComponentScan(basePackages = { "com.pala.springboot.*" })
-@EntityScan("com.pala.springboot.data")   
+@EntityScan("com.pala.springboot.data")
+@Import({ AppConfig.class })
 public class Application {
 
 	public static void main(String[] args) {

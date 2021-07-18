@@ -1,8 +1,13 @@
+com\pala\springboot\controller\HelloWorldController.class
+com\pala\springboot\controller\UserHateoasController.class
 com\pala\springboot\data\Order.class
 com\pala\springboot\exception\UserExistsException.class
+com\pala\springboot\controller\UserMappingJacksonController.class
 com\pala\springboot\repository\UserRepository.class
 com\pala\springboot\repository\OrderRepository.class
 com\pala\springboot\exception\CustomErrorDetails.class
+com\pala\springboot\data\Views$Internal.class
+com\pala\springboot\controller\OrderHateoasController.class
 com\pala\springboot\controller\UserController.class
 com\pala\springboot\exception\GlobalRestControllerAdviceExceptionHandler.class
 com\pala\springboot\controller\OrderController.class
@@ -10,4 +15,7 @@ com\pala\springboot\data\UserDetail.class
 com\pala\springboot\data\User.class
 com\pala\springboot\exception\UserNotFoundException.class
 com\pala\springboot\run\Application.class
+com\pala\springboot\data\Views$External.class
+com\pala\springboot\data\Views.class
 com\pala\springboot\service\UserService.class
+com\pala\springboot\controller\UserJsonViewController.class
