@@ -9,10 +9,14 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonView;
+
 import org.springframework.hateoas.RepresentationModel;
 
 @Entity
 @Table(name = "users")
+//@JsonFilter(value = "userFilter")	// for UserMappingJacksonController - static filtering by MappingJacksonValue
 public class User extends RepresentationModel<User> {
 	
 	/**
@@ -20,24 +24,31 @@ public class User extends RepresentationModel<User> {
 	 */
 	@Id
 	@GeneratedValue
+	@JsonView(Views.External.class)
 	private Long userId;
 	
 	@Column(name = "USER_NAME", length = 50, nullable = false, unique = true)
+	@JsonView(Views.External.class)
 	private String username;
 	
 	@Column(name = "FIRST_NAME", length = 50, nullable = false)
+	@JsonView(Views.External.class)
 	private String firstname;
 	
 	@Column(name = "LAST_NAME", length = 50, nullable = false)
+	@JsonView(Views.External.class)
 	private String lastname;
 	
 	@Column(name = "EMAIL_ADDRESS", length = 50, nullable = false)
+	@JsonView(Views.External.class)
 	private String email;
 	
 	@Column(name = "ROLE", length = 50, nullable = false)
+	@JsonView(Views.Internal.class)
 	private String role;
 	
 	@Column(name = "SSN", length = 50, nullable = false, unique = true)
+	@JsonView(Views.Internal.class)
 	private String ssn;
 	
 	@OneToMany(mappedBy = "user")
