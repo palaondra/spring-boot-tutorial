@@ -53,6 +53,9 @@ public class User extends RepresentationModel<User> {
 	
 	@OneToMany(mappedBy = "user")
 	private List<Order> orders;
+
+	@Column(name = "address")
+	private String address;
 	
 	/**
 	 * JPA need no-args constructor.
@@ -61,7 +64,7 @@ public class User extends RepresentationModel<User> {
 		
 	}
 
-	public User(Long userId, String username, String firstname, String lastname, String email, String role, String ssn) {
+	public User(Long userId, String username, String firstname, String lastname, String email, String role, String ssn, String address) {
 		this.userId = userId;
 		this.username = username;
 		this.firstname = firstname;
@@ -69,6 +72,7 @@ public class User extends RepresentationModel<User> {
 		this.email = email;
 		this.role = role;
 		this.ssn = ssn;
+		this.address = address;
 	}
 
 	public Long getUserId() {
@@ -133,6 +137,14 @@ public class User extends RepresentationModel<User> {
 
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 	@Override
