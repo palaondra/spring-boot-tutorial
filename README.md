@@ -5,3 +5,5 @@
 - H2 in memory database
 - HATEOAS
 - multilanguage support
+- JsonView
+- ModelMapper
